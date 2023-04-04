@@ -1,5 +1,5 @@
-
-create function FN_Login (@Uname nvarchar(50),@Upass varchar(500))
+--login function
+alter function FN_Login (@Uname nvarchar(50),@Upass varchar(500))
 returns nvarchar(50)
 as
 begin
@@ -9,13 +9,12 @@ begin
 		select @pass= convert(varchar(200),DECRYPTBYPASSPHRASE('Pwd',pass)) from Accounts where username=@Uname
 		if @pass=@Upass
 		begin
-			return @Uname;
+			return 'valid login with user '+@Uname;
 		end
 	end
 		return 'invalid user name or password';
 end
 
 --try to login(must run together)
-declare @username nvarchar(50);
-select @username= dbo.FN_Login ('adham','pass12343')
-select @username
+select dbo.FN_Login ('adham','pass12343')
+------------------------------------------------------------------------------------------------------
