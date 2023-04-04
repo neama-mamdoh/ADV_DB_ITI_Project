@@ -121,9 +121,8 @@ create table Accounts (
 						username nvarchar(50) primary key ,
 						[user_id] int unique not null,
 						[role] nvarchar(50),
-						pass nvarchar(20))
+						pass varchar(500))
 ---------------------------------------------------------------------						
-
 
 
 					
